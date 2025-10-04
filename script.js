@@ -10,22 +10,26 @@ document.getElementById('daftarForm').addEventListener('submit', async function(
     return;
   }
 
-  const formData = new FormData(form);
-  formData.set("jumlahTransfer", "1000000"); // Pastikan jumlah tetap 1 juta
-
-  // Convert file ke blob
   const file = fileInput.files[0];
-  formData.set("buktiTransferFile", file);
+  const base64File = await toBase64(file);
 
-  const plainObject = {};
-  formData.forEach((value, key) => {
-    plainObject[key] = value;
-  });
+  // Kumpulkan semua data form
+  const data = {
+    namaTim: form.querySelector('input[name="namaTim"]').value,
+    alamat: form.querySelector('input[name="alamat"]').value,
+    officialTeam: form.querySelector('input[name="officialTeam"]').value,
+    nomorWA: form.querySelector('input[name="nomorWA"]').value,
+    email: form.querySelector('input[name="email"]').value,
+    jumlahTransfer: "1000000",
+    buktiTransferFile: base64File,
+    buktiTransferFileType: file.type,
+    buktiTransferFileName: file.name
+  };
 
   try {
     const response = await fetch(SCRIPT_URL, {
       method: 'POST',
-      body: JSON.stringify(plainObject),
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -40,6 +44,16 @@ document.getElementById('daftarForm').addEventListener('submit', async function(
     }
   } catch(err){
     console.error(err);
-    document.getElementById('response').innerText = "Terjadi kesalahan saat mengirim data.";
+    document.getElementById('response').innerText = "❌ Terjadi kesalahan saat mengirim data.";
   }
 });
+
+// Fungsi konversi file → base64
+function toBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
