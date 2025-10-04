@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbws54Jlhuj3ulQa6WLRzKHrZ7rs_7gVMDfBbgqCwac6hOKt-bv5Mqlc4v2V5CJ7pasgOQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwA_sLWbI7X4p7r4vl8k-Xr4jUstYzSvPKfY7SGvC2AlcBKBAwmXooIIs-p1VnWKcKxnQ/exec";
 
 document.getElementById('daftarForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -57,3 +57,4 @@ function toBase64(file) {
     reader.onerror = error => reject(error);
   });
 }
+
