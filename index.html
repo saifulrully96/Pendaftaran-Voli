@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pendaftaran Turnamen Voli Putra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>PENDAFTARAN TURNAMEN VOLI PUTRA. DALAM RANGKA HUT BINA BHAKTI KE 33</h2>
+    <form id="daftarForm">
+      <label>Nama Tim <span>*</span></label>
+      <input type="text" name="namaTim" placeholder="Isi Nama Tim" required>
+
+      <label>Alamat <span>*</span></label>
+      <input type="text" name="alamat" placeholder="Wajib Isi Alamat Tim" required>
+
+      <label>Nama Official Tim <span>*</span></label>
+      <input type="text" name="officialTeam" placeholder="Isi Nama Official / Manager / Pelatih" required>
+
+      <label>No WA Official Tim <span>*</span></label>
+      <input type="text" name="nomorWA" placeholder="Isi Nomor WA aktif" required>
+
+      <label>Email Aktif <span>*</span></label>
+      <input type="email" name="email" placeholder="Wajib Isi Email untuk menerima Bukti Pendaftaran" required>
+
+      <p class="transfer-info">Biaya Pendaftaran Rp 1.000.000,-<br>Harap kirim bukti pembayaran yang sah dan sesuai!</p>
+
+      <label>Bukti Transfer/Pembayaran <span>*</span></label>
+      <input type="file" name="buktiTransferFile" accept="image/*,application/pdf" required>
+      <small>Format JPG, PNG, PDF. Upload screenshot bukti pembayaran.</small>
+
+      <button type="submit">Daftar</button>
+    </form>
+    <p id="response"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
